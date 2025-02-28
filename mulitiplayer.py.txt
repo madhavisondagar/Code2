@@ -1,0 +1,31 @@
+import random
+
+def main():
+    print("Welcome to 'Guess the Number'!")
+    player_count = int(input("Enter the number of players: "))
+    players = [input(f"Enter Player {i+1} name: ") for i in range(player_count)]
+    
+    secret_number = random.randint(1, 100)
+    print("I've picked a number between 1 and 100. Try to guess it!")
+    
+    winner = None
+    attempts = 0
+    
+    while winner is None:
+        for player in players:
+            guess = int(input(f"{player}, enter your guess: "))
+            attempts += 1
+            
+            if guess < secret_number:
+                print("Too low! Try again.")
+            elif guess > secret_number:
+                print("Too high! Try again.")
+            else:
+                print(f"Congratulations {player}! You guessed the number in {attempts} attempts!")
+                winner = player
+                break
+    
+    print("Game Over! Thanks for playing.")
+
+if __name__ == "__main__":
+    main()
